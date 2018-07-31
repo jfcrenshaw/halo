@@ -1,0 +1,43 @@
+
+JF Crenshaw April 2018
+
+Expected number of 1n,2n events in HALO2 from cooling neutron stars at 10kpc (calculated using snowglobes)
+Source:  Huedepohl, L. (2014), Neutrinos from the Formation, Cooling and Black Hole Collapse of Neutron Stars, 
+                               PhD. Thesis, Technische Universitat Muenchen
+
+
+                            Normal Hierarchy                   Inverted Hierarchy      
+
+flux                        1n             2n                   1n             2n       
+      
+LS220-s11.2                 106            15                   95             13       
+LS220-ss11.2c               122            19                   107            15       
+LS220-ss11.2co              110            17                   97             14       
+LS220-ss25.0                287            75                   279            69       
+LS220-ss25.0o               191            57                   197            55       
+LS220-ss25.0c               358            92                   337            81       
+LS220-ss25.0co              255            70                   247            63       
+LS220-ss27.0                203            39                   191            35       
+LS220-ss27.0o               182            35                   171            32       
+LS220-ss27.0c               246            49                   223            41       
+LS220-ss27.0co              215            45                   197            38       
+LS220-ss40.0                248            53                   234            48       
+LS220-ss40.0o               176            43                   174            41       
+LS220-ss40.0c               275            64                   255            55       
+LS220-ss40.0co              254            59                   236            51       
+
+Shen-s11.2                  80             10                   72              8       
+Shen-s11.2c                 84             11                   75              9       
+Shen-s11.2co                80             10                   71              8       
+Shen-s25.0                  219            43                   213            40       
+Shen-s25.0o                 201            40                   197            38       
+Shen-s25.0c                 246            48                   234            42       
+Shen-s25.0co                208            43                   200            38       
+Shen-s27.0                  151            23                   142            21       
+Shen-s27.0o                 133            21                   126            19       
+Shen-s27.0c                 165            26                   152            22       
+Shen-s27.0co                143            24                   133            21       
+Shen-s40.0                  187            33                   180            30       
+Shen-s40.0o                 170            30                   163            27       
+Shen-s40.0c                 191            35                   179            30       
+Shen-s40.0co                179            33                   168            29   

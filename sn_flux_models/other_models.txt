@@ -1,0 +1,8 @@
+
+Event numbers in HALO2 for a supernova at 10kpc for 3 other models.
+Check the references of the tech note for the sources.
+
+                           NMH                 IMH
+Garching                221   78            204   68
+GVKM                    202  126            205  118  
+Basel-Darmstadt         128   56            105   42
