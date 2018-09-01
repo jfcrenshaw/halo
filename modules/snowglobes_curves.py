@@ -48,8 +48,10 @@ def snowglobes_curves(axis,detector,dist,color):
 
     if color == True:
         colors = ['r','b']
-    else:
+    elif color == False:
         colors = ['black','black']
+    else:
+        colors = [color,color]
 
     for i in [E13L1NH,E18L1NH,E25L1NH]:
         axis.plot(i[0]*scale,i[1]*scale,color=colors[0],linestyle='--')

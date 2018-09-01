@@ -1,0 +1,8 @@
+# ignore python bytecode files
+*.pyc
+
+# ignore pycache
+./modules/__pycache__
+
+# ignore ipynb checkpoints
+.ipynb_checkpoints

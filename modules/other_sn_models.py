@@ -26,19 +26,28 @@ def other_sn_models(axis,detector,dist,color):
     # Huedepohl points
     half = len(NHoneN)//2
     if color == True:
+        LSS20_color = 'black'
         shen_color = 'silver'
-    else:
+    elif color == False:
+        LSS20_color = 'black'
         shen_color = 'black'
-    axis.scatter(NHoneN[:half]*scale,NHtwoN[:half]*scale,marker='s',edgecolors='black',facecolors='none')
-    axis.scatter(IHoneN[:half]*scale,IHtwoN[:half]*scale,marker='s',color='black')
+    else:
+        LSS20_color = color
+        shen_color = color
+
+    axis.scatter(NHoneN[:half]*scale,NHtwoN[:half]*scale,marker='s',edgecolors=LSS20_color,facecolors='none')
+    axis.scatter(IHoneN[:half]*scale,IHtwoN[:half]*scale,marker='s',color=LSS20_color)
     axis.scatter(NHoneN[half:]*scale,NHtwoN[half:]*scale,marker='s',edgecolors=shen_color,facecolors='none')
     axis.scatter(IHoneN[half:]*scale,IHtwoN[half:]*scale,marker='s',color=shen_color)
 
     # Other points
     if color == True:
         colors = ['c','m','forestgreen']
-    else:
+    elif color == False:
         colors = ['black','black','black']
+    else:
+        colors = [color,color,color]
+
     for i in range(len(other1nNH)):
         axis.scatter(other1nNH[i]*scale,other2nNH[i]*scale,marker='s',edgecolors=colors[i],facecolors='none')
         axis.scatter(other1nIH[i]*scale,other2nIH[i]*scale,marker='s',color=colors[i])
