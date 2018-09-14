@@ -2,7 +2,7 @@
 *.pyc
 
 # ignore pycache
-./modules/__pycache__
+./modules/__pycache__*
 
 # ignore ipynb checkpoints
 .ipynb_checkpoints
