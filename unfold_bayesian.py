@@ -38,11 +38,15 @@ for config in truth:
 		# Unfold
 		os.system("root -l -q 'modules/unfold_bayesian_root.C({0},{1},{2},{3})'".format(config_num,config_dist,oneN,twoN))
 
-		# save text files as npy files
-		txt_to_npy(truprior)
-		txt_to_npy(obsprior)
-		txt_to_npy(obsdata)
+		# save the unfolded text file as npy file
+		unfolded  = './unfolded_data/halo'+str(config_num)+'_'+str(config_dist)+'kpc_'+\
+					str(oneN)+'v'+str(twoN)+'_unfolded_bayesian.txt'
+                txt_to_npy(unfolded)
 
 		# remove the text files
-		os.system('rm unfolded_data/*txt')
+		os.system('rm data/*txt')
 		os.system('rm priors/*txt')
+                os.system('rm unfolded_data/*txt')
+
+
+

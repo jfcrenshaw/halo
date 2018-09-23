@@ -6,3 +6,6 @@
 
 # ignore ipynb checkpoints
 .ipynb_checkpoints
+
+# ignore the backup ~ files on linux
+*~
