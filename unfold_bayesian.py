@@ -3,6 +3,7 @@
 # Note that this script requires ROOT (it runs a ROOT script below).
 # It needs to be run on the neutrino computers (or any computer with ROOT)
 
+import os
 from modules.truth import truth
 from modules.npy_to_txt import npy_to_txt
 
@@ -34,5 +35,8 @@ for config in truth:
 		# save text versions
 		npy_to_txt(truprior)
 		npy_to_txt(obsprior)
-		npy_to_txt(trudata)
+		#npy_to_txt(trudata)
 		npy_to_txt(obsdata)
+
+		# Unfold
+		os.system("root -l -q 'modules/unfold_bayesian_root.C({0},{1},{2},{3})'".format(config_num,config_dist,oneN,twoN))
