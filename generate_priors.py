@@ -3,16 +3,22 @@
 import numpy as np
 
 from modules.truth import truth
-from modules.prior_distUnknown import prior_distUnknown
-from modules.prior_distKnown import prior_distKnown
+from modules.priors import prior_positive_plane, prior_distUnknown, prior_distKnown
+#from modules.prior_distUnknown import prior_distUnknown
+#from modules.prior_distKnown import prior_distKnown
 
 inputfile = 'input.txt'
 truth = truth(inputfile)
 
 dist_uncertainty = 0.1
 
-#prior_distUnknown()
+# generate positive plane prior
+prior_positive_plane()
 
+# generate the distance unknown prior
+prior_distUnknown()
+
+# generate the distance known priors
 for config in truth:
     config_ = int(config[4])
     dist = float(config[6:-3])
