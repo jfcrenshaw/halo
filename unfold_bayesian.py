@@ -78,7 +78,7 @@ for config in truth:
 		# UNFOLD WITH THE DISTANCE KNOWN PRIORS
 		# ----------------------------------------------------------------------
 		# ----------------------------------------------------------------------
-
+		"""
 		# prior names
 		truprior = './priors/prior_halo'+str(config_num)+'_'+str(config_dist)+\
 					'kpc_truth.npy'
@@ -99,8 +99,8 @@ for config in truth:
 					'kpc_'+str(oneN)+'v'+str(twoN)+'_unfolded_bayesian_'+\
 					'distKnown.txt'
         	txt_to_npy(unfolded)
-
-
+		
+		"""
 		# ----------------------------------------------------------------------
 		# ----------------------------------------------------------------------
 

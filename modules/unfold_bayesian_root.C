@@ -52,8 +52,8 @@ void unfold_bayesian_root(int config, int distance, int oneN, int twoN, int prio
         int ymax = tprior_tru->GetMaximum("2nt")+10;
     }
     else {
-        int xmax = static_cast<int>(oneN+5*sqrt(oneN)+0.5);
-        int ymax = static_cast<int>(twoN+5*sqrt(twoN)+0.5); 
+        int xmax = static_cast<int>(oneN+5*sqrt(oneN)+100);
+        int ymax = static_cast<int>(twoN+5*sqrt(twoN)+100); 
     }
 
     TH2D *temp = new TH2D("temp","temp",40,0,xmax,40,0,ymax);
