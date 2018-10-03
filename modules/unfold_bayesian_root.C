@@ -47,10 +47,15 @@ void unfold_bayesian_root(int config, int distance, int oneN, int twoN, int prio
 
     // First I need to create a 2D hist with the right dimension
     // Needed to supply dimensions to the response matrix
-    // int xmax = static_cast<int>(oneN+5*sqrt(oneN)+0.5);
-    // int ymax = static_cast<int>(twoN+5*sqrt(twoN)+0.5);  
-    int xmax = tprior_tru->GetMaximum("1nt")+10;
-    int ymax = tprior_tru->GetMaximum("2nt")+10;
+    if (prior == 1) {
+        int xmax = tprior_tru->GetMaximum("1nt")+10;
+        int ymax = tprior_tru->GetMaximum("2nt")+10;
+    }
+    else {
+        int xmax = static_cast<int>(oneN+5*sqrt(oneN)+0.5);
+        int ymax = static_cast<int>(twoN+5*sqrt(twoN)+0.5); 
+    }
+
     TH2D *temp = new TH2D("temp","temp",40,0,xmax,40,0,ymax);
 
     RooUnfoldResponse response(temp,temp); // Create the response matrix
