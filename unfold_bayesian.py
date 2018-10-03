@@ -41,13 +41,13 @@ for config in truth:
 		npy_to_txt(obsprior)
 
 		# Unfold
-		os.system("root -l -q 'modules/unfold_bayesian_root.C({0},{1},{2},{3} \
+		os.system("root -l -q 'modules/unfold_bayesian_root.C({0},{1},{2},{3},{4} \
 					)'".format(config_num,config_dist,oneN,twoN,1))
 		
 		# save the unfolded text file as npy file
 		unfolded  = './unfolded_data/halo'+str(config_num)+'_'+str(config_dist)+\
 					'kpc_'+str(oneN)+'v'+str(twoN)+'_unfolded_bayesian_PP.txt'
-        txt_to_npy(unfolded)
+        	txt_to_npy(unfolded)
 		
 		# ----------------------------------------------------------------------
 		# ----------------------------------------------------------------------
@@ -64,14 +64,14 @@ for config in truth:
 		npy_to_txt(obsprior)
 
 		# Unfold
-		os.system("root -l -q 'modules/unfold_bayesian_root.C({0},{1},{2},{3} \
+		os.system("root -l -q 'modules/unfold_bayesian_root.C({0},{1},{2},{3},{4} \
 					)'".format(config_num,config_dist,oneN,twoN,2))
 		
 		# save the unfolded text file as npy file
 		unfolded  = './unfolded_data/halo'+str(config_num)+'_'+str(config_dist)+\
 					'kpc_'+str(oneN)+'v'+str(twoN)+'_unfolded_bayesian_'+\
 					'distUnknown.txt'
-        txt_to_npy(unfolded)
+        	txt_to_npy(unfolded)
 
 		# ----------------------------------------------------------------------
 		# ----------------------------------------------------------------------
@@ -91,14 +91,14 @@ for config in truth:
 		npy_to_txt(obsdata)
 
 		# Unfold
-		os.system("root -l -q 'modules/unfold_bayesian_root.C({0},{1},{2},{3} \
+		os.system("root -l -q 'modules/unfold_bayesian_root.C({0},{1},{2},{3},{4} \
 					)'".format(config_num,config_dist,oneN,twoN,3))
 
 		# save the unfolded text file as npy file
 		unfolded  = './unfolded_data/halo'+str(config_num)+'_'+str(config_dist)+\
 					'kpc_'+str(oneN)+'v'+str(twoN)+'_unfolded_bayesian_'+\
 					'distKnown.txt'
-        txt_to_npy(unfolded)
+        	txt_to_npy(unfolded)
 
 
 		# ----------------------------------------------------------------------
@@ -107,7 +107,7 @@ for config in truth:
 		# remove the text files
 		os.system('rm data/*txt')
 		os.system('rm priors/*txt')
-        os.system('rm unfolded_data/*txt')
+        	os.system('rm unfolded_data/*txt')
 
 
 

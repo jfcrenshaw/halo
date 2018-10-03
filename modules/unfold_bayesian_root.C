@@ -13,24 +13,29 @@ void unfold_bayesian_root(int config, int distance, int oneN, int twoN, int prio
     convert2 << "halo" << config << "_" << distance << "kpc_" << oneN << "v" << twoN;
     file_id = convert2.str();
     cout << endl << "------------------------------------" << endl;
-    cout << "Now unfolding:" << endl << file_id << endl << endl;
+    cout << "Now unfolding:" << endl << file_id << endl;
 
     // Load the Prior
     if (prior == 1) {
         // Positive Plane prior
         string prior_truth = "./priors/prior_positive_plane_truth.txt";
         string prior_obs   = "./priors/prior_positive_plane_observed.txt";
+	string unfolding_type = "Positive Plane Prior";
     }
     else if (prior == 2) {
         // Distance Unknwon prior
         string prior_truth = "./priors/prior_distUnknown_truth.txt";
         string prior_obs   = "./priors/prior_distUnknown_observed.txt";
+	string unfolding_type = "Distance Unknown Prior";
     }
     else if (prior == 3) {
         // Distance Known prior
         string prior_truth = "./priors/prior_" + prior_id + "_truth.txt";
         string prior_obs   = "./priors/prior_" + prior_id + "_observed.txt";
+	string unfolding_type = "Distance Known Prior";
     }
+
+    cout << "with" << unfolding_type << endl << endl;
 
     TTree *tprior_tru = new TTree("tprior_tru","Prior truth");
     TTree *tprior_obs = new TTree("tprior_obs","Prior observed");
