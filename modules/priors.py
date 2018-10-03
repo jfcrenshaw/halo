@@ -8,8 +8,8 @@ def prior_positive_plane():
     tru = [[],[]] # array for truth values
     obs = [[],[]] # array for observed values
 
-    for i in range(380):
-        for j in range(int(6/8*251+0.5)):
+    for i in range(500):
+        for j in range(int(6/8*500+0.5)):
             tru[0].append(i)
             tru[1].append(j)
 
@@ -30,7 +30,7 @@ def prior_distUnknown():
     tru = [[],[]] # array for truth values
     obs = [[],[]] # array for observed values
 
-    for i in range(380):
+    for i in range(500):
         for j in range(int(8./11.*i+0.5)):
             tru[0].append(i)
             tru[1].append(j)

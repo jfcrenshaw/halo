@@ -35,7 +35,7 @@ void unfold_bayesian_root(int config, int distance, int oneN, int twoN, int prio
 	string unfolding_type = "Distance Known Prior";
     }
 
-    cout << "with" << unfolding_type << endl << endl;
+    cout << "with " << unfolding_type << endl << endl;
 
     TTree *tprior_tru = new TTree("tprior_tru","Prior truth");
     TTree *tprior_obs = new TTree("tprior_obs","Prior observed");
