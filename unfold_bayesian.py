@@ -19,16 +19,71 @@ for config in truth:
 		oneN = pair[0]
 		twoN = pair[1]
 
-		# First we need to convert the numpy arrays for the prior and data
-		# to normal text files so that root can use them
+		# observed data
+		obsdata  = './data/halo'+str(config_num)+'_'+str(config_dist)+'kpc_'+\
+					str(oneN)+'v'+str(twoN)+'_observed.npy'
 
-		# file names
+		# save a txt version for root to use
+		npy_to_txt(obsdata)
+
+		# ----------------------------------------------------------------------
+		# ----------------------------------------------------------------------
+		# UNFOLD WITH THE POSITIVE PLANE PRIOR
+		# ----------------------------------------------------------------------
+		# ----------------------------------------------------------------------
+
+		# prior names
+		truprior = './priors/prior_positive_plane_truth.npy'
+		obsprior = './priors/prior_positive_plane_observed.npy'
+
+		# save text versions
+		npy_to_txt(truprior)
+		npy_to_txt(obsprior)
+
+		# Unfold
+		os.system("root -l -q 'modules/unfold_bayesian_root.C({0},{1},{2},{3} \
+					)'".format(config_num,config_dist,oneN,twoN,1))
+		
+		# save the unfolded text file as npy file
+		unfolded  = './unfolded_data/halo'+str(config_num)+'_'+str(config_dist)+\
+					'kpc_'+str(oneN)+'v'+str(twoN)+'_unfolded_bayesian_PP.txt'
+        txt_to_npy(unfolded)
+		
+		# ----------------------------------------------------------------------
+		# ----------------------------------------------------------------------
+		# UNFOLD WITH THE DISTANCE UNKNOWN PRIORS
+		# ----------------------------------------------------------------------
+		# ----------------------------------------------------------------------
+
+		# prior names
+		truprior = './priors/prior_distUnknown_truth.npy'
+		obsprior = './priors/prior_distUnknown_observed.npy'
+
+		# save text versions
+		npy_to_txt(truprior)
+		npy_to_txt(obsprior)
+
+		# Unfold
+		os.system("root -l -q 'modules/unfold_bayesian_root.C({0},{1},{2},{3} \
+					)'".format(config_num,config_dist,oneN,twoN,2))
+		
+		# save the unfolded text file as npy file
+		unfolded  = './unfolded_data/halo'+str(config_num)+'_'+str(config_dist)+\
+					'kpc_'+str(oneN)+'v'+str(twoN)+'_unfolded_bayesian_'+\
+					'distUnknown.txt'
+        txt_to_npy(unfolded)
+
+		# ----------------------------------------------------------------------
+		# ----------------------------------------------------------------------
+		# UNFOLD WITH THE DISTANCE KNOWN PRIORS
+		# ----------------------------------------------------------------------
+		# ----------------------------------------------------------------------
+
+		# prior names
 		truprior = './priors/prior_halo'+str(config_num)+'_'+str(config_dist)+\
 					'kpc_truth.npy'
 		obsprior = './priors/prior_halo'+str(config_num)+'_'+str(config_dist)+\
 					'kpc_observed.npy' 
-		obsdata  = './data/halo'+str(config_num)+'_'+str(config_dist)+'kpc_'+\
-					str(oneN)+'v'+str(twoN)+'_observed.npy'
 
 		# save text versions
 		npy_to_txt(truprior)
@@ -36,17 +91,24 @@ for config in truth:
 		npy_to_txt(obsdata)
 
 		# Unfold
-		os.system("root -l -q 'modules/unfold_bayesian_root.C({0},{1},{2},{3})'".format(config_num,config_dist,oneN,twoN))
+		os.system("root -l -q 'modules/unfold_bayesian_root.C({0},{1},{2},{3} \
+					)'".format(config_num,config_dist,oneN,twoN,3))
 
 		# save the unfolded text file as npy file
-		unfolded  = './unfolded_data/halo'+str(config_num)+'_'+str(config_dist)+'kpc_'+\
-					str(oneN)+'v'+str(twoN)+'_unfolded_bayesian.txt'
-                txt_to_npy(unfolded)
+		unfolded  = './unfolded_data/halo'+str(config_num)+'_'+str(config_dist)+\
+					'kpc_'+str(oneN)+'v'+str(twoN)+'_unfolded_bayesian_'+\
+					'distKnown.txt'
+        txt_to_npy(unfolded)
+
+
+		# ----------------------------------------------------------------------
+		# ----------------------------------------------------------------------
 
 		# remove the text files
 		os.system('rm data/*txt')
 		os.system('rm priors/*txt')
-                os.system('rm unfolded_data/*txt')
+        os.system('rm unfolded_data/*txt')
+
 
 
 

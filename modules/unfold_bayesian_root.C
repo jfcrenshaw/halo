@@ -1,6 +1,6 @@
-void unfold_bayesian_root(int config, int distance, int oneN, int twoN) {
+void unfold_bayesian_root(int config, int distance, int oneN, int twoN, int prior) {
 
-    gROOT->SetBatch(); // don"t display the histograms
+    gROOT->SetBatch(); // don't display the histograms
 
     // Load the RooUnfold Library
     gSystem->Load("~/Downloads/RooUnfold-1.1.1/libRooUnfold");
@@ -16,8 +16,21 @@ void unfold_bayesian_root(int config, int distance, int oneN, int twoN) {
     cout << "Now unfolding:" << endl << file_id << endl << endl;
 
     // Load the Prior
-    string prior_truth = "./priors/prior_" + prior_id + "_truth.txt";
-    string prior_obs   = "./priors/prior_" + prior_id + "_observed.txt";
+    if (prior == 1) {
+        // Positive Plane prior
+        string prior_truth = "./priors/prior_positive_plane_truth.txt";
+        string prior_obs   = "./priors/prior_positive_plane_observed.txt";
+    }
+    else if (prior == 2) {
+        // Distance Unknwon prior
+        string prior_truth = "./priors/prior_distUnknown_truth.txt";
+        string prior_obs   = "./priors/prior_distUnknown_observed.txt";
+    }
+    else if (prior == 3) {
+        // Distance Known prior
+        string prior_truth = "./priors/prior_" + prior_id + "_truth.txt";
+        string prior_obs   = "./priors/prior_" + prior_id + "_observed.txt";
+    }
 
     TTree *tprior_tru = new TTree("tprior_tru","Prior truth");
     TTree *tprior_obs = new TTree("tprior_obs","Prior observed");
@@ -64,14 +77,29 @@ void unfold_bayesian_root(int config, int distance, int oneN, int twoN) {
 
     // Unfold the data!
     int iterations = 1;
-    // Don"t iterate, because that requires an ensemble of detections, 
+    // Don't iterate, because that requires an ensemble of detections, 
     // which HALO won"t have in real life
     RooUnfoldBayes unfold(&response,data_hist,iterations);
     TH2D* unfolded = (TH2D*) unfold.Hreco();
 
 
     // Save the results in a text file
-    string unfolded_file = "./unfolded_data/" + file_id + "_unfolded_bayesian.txt";
+    if (prior == 1) {
+        // Positive Plane prior
+        string unfolded_file = "./unfolded_data/" + file_id + 
+                                "_unfolded_bayesian_PP.txt";
+    }
+    else if (prior == 2) {
+        // Distance Unknwon prior
+        string unfolded_file = "./unfolded_data/" + file_id + 
+                                "_unfolded_bayesian_distUnknown.txt";
+    }
+    else if (prior == 3) {
+        // Distance Known prior
+        string unfolded_file = "./unfolded_data/" + file_id + 
+                                "_unfolded_bayesian_distKnown.txt";
+    }
+
     ofstream savefile;
     savefile.open(unfolded_file.c_str());
 
