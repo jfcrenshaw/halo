@@ -4,8 +4,6 @@ import numpy as np
 
 from modules.truth import truth
 from modules.priors import prior_positive_plane, prior_distUnknown, prior_distKnown
-#from modules.prior_distUnknown import prior_distUnknown
-#from modules.prior_distKnown import prior_distKnown
 
 inputfile = 'input.txt'
 truth = truth(inputfile)
