@@ -8,7 +8,7 @@ from convert_files import npy_to_txt, txt_to_npy
 
 config = 2 # 1=HALO, 2=HALO-1kT
 dist = [10] # supernova distance in kpc
-eff = [0.3] # 1n detection efficiency
+eff = [0.3,0.35,0.4,0.45,0.50,0.55,0.6,0.65] # 1n detection efficiency
 
 for d in dist:
     for e in eff:
