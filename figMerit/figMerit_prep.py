@@ -10,8 +10,8 @@ import numpy as np
 # ------------------------------------------------------------------------------
 
 config = 1 # 1=HALO, 2=HALO-1kT
-dist_uncertainty = [0,0.1]
-dist = [12,14] # supernova distance in kpc
+dist_uncertainty = [0,0.1,0.2,0.3,0.4,0.5]
+dist = [2,4,6,8] # supernova distance in kpc
 eff = [0.28] # 1n detection efficiency
 
 def main():
