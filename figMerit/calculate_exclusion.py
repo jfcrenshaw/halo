@@ -7,8 +7,8 @@ from scipy import stats
 
 
 config = 2 # 1=HALO, 2=HALO-1kT
-dist = [10] # supernova distance in kpc
-eff = [0.3,0.35,0.4,0.45,0.50,0.55,0.6,0.65] # 1n detection efficiency
+dist = [5,10,15,20,25,30,35,40,45,50] # supernova distance in kpc
+eff = [0.3,0.35,0.4,0.45,0.50,0.55,0.6,0.65,0.7,0.75,0.8] # 1n detection efficiency
 
 
 def main():
@@ -34,8 +34,8 @@ def main():
             x = p.vertices[:,0]
             y = p.vertices[:,1]
             # area with Green's theorem
-            area=0.5*np.sum(y[:-1]*np.diff(x) - x[:-1]*np.diff(y))
-            area=np.abs(area)
+            area = 0.5*np.sum(y[:-1]*np.diff(x) - x[:-1]*np.diff(y))
+            area = np.abs(area)
             
             # load the prior data
             prior = 'priors/prior_halo'+str(config)+'_'+str(d)+'kpc_truth.npy'
@@ -45,8 +45,8 @@ def main():
             Exclusion = 1-area/prior_area
 
             outfile.write('{0:<15}{1:<8}{2:<15}\n'.format(d,e,Exclusion))
-            #exclusions_.append(Exclusion)
-            #print('exclusion =',1-area/prior_area)
+
+            ax.remove()
 
 
 def trim_data(xdata,ydata):

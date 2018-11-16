@@ -1,2 +1,0 @@
-Dist (kpc)     Eff     Exclusion      
-10             0.3     0.7406821205740265

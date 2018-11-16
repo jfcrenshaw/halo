@@ -11,8 +11,8 @@ import numpy as np
 
 config = 2 # 1=HALO, 2=HALO-1kT
 dist_uncertainty = 0.1
-dist = [10] # supernova distance in kpc
-eff = [0.3,0.35,0.4,0.45,0.50,0.55,0.6,0.65] # 1n detection efficiency
+dist = [5,10,15,20,25,30,35,40,45,50] # supernova distance in kpc
+eff = [0.3,0.35,0.4,0.45,0.50,0.55,0.6,0.65,0.7,0.75,0.8] # 1n detection efficiency
 
 def main():
     for d in dist:
@@ -178,7 +178,7 @@ def simulate_observations(config,dist,e):
         data_location = './data/'
         output_truth = 'halo'+str(config)+'_'+str(dist)+'kpc_truth_E'+str(int(e*100))+'.npy'
         output_obs = 'halo'+str(config)+'_'+str(dist)+'kpc_observed_E'+str(int(e*100))+'.npy'
-        np.save(data_location+output_truth,tru)
+        #np.save(data_location+output_truth,tru)
         np.save(data_location+output_obs,obs)
 
 
