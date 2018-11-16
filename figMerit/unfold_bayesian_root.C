@@ -24,14 +24,8 @@ void unfold_bayesian_root(int config, int distance, int eff, int oneN, int twoN)
 
     // First I need to create a 2D hist with the right dimension
     // Needed to supply dimensions to the response matrix
-    if (prior == 1) {
-        int xmax = tprior_tru->GetMaximum("1nt")+10;
-        int ymax = tprior_tru->GetMaximum("2nt")+10;
-    }
-    else {
-        int xmax = static_cast<int>(oneN+5*sqrt(oneN)+100);
-        int ymax = static_cast<int>(twoN+5*sqrt(twoN)+100); 
-    }
+    int xmax = static_cast<int>(oneN+5*sqrt(oneN)+100);
+    int ymax = static_cast<int>(twoN+5*sqrt(twoN)+100); 
 
     TH2D *temp = new TH2D("temp","temp",40,0,xmax,40,0,ymax);
 
@@ -58,10 +52,10 @@ void unfold_bayesian_root(int config, int distance, int eff, int oneN, int twoN)
     // Load the data
     string data_file;
     ostringstream convert3;
-    convert3 << "./data/halo" << distance << "kpc_observed_E" << eff << ".txt";
-    data_file = convert3.c_str();
+    convert3 << "./data/halo" << config << "_"  << distance << "kpc_observed_E" << eff << ".txt";
+    data_file = convert3.str();
     TTree *data = new TTree("data","Observed Data");
-    data->ReadFile(data_file,"data1n/D:data2n/D");
+    data->ReadFile(data_file.c_str(),"data1n/D:data2n/D");
     TH2D *data_hist = new TH2D("data_hist","Histogram of observed data",40,0,xmax,40,0,ymax);
     data->Draw("data2n:data1n >> data_hist","","");
 
@@ -76,11 +70,11 @@ void unfold_bayesian_root(int config, int distance, int eff, int oneN, int twoN)
     // Save the results in a text file
     string unfolded_file;
     ostringstream convert4;
-    convert4 << "./unfolded_data/halo" << distance << "kpc_unfolded_E" << eff << ".txt";
-    unfolded_file = convert4.c_str();
+    convert4 << "./unfolded_data/halo" << config << "_" << distance << "kpc_unfolded_E" << eff << ".txt";
+    unfolded_file = convert4.str();
 
     ofstream savefile;
-    savefile.open(unfolded_file);
+    savefile.open(unfolded_file.c_str());
 
     int nx = unfolded->GetNbinsX();
     int ny = unfolded->GetNbinsY();

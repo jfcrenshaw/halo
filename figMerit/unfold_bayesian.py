@@ -44,11 +44,11 @@ for d in dist:
         twoN = 48*scale
 
         # Unfold
-        os.system("root -l -q 'modules/unfold_bayesian_root.C({0},{1},{2},{3},{4}\
+        os.system("root -l -q 'unfold_bayesian_root.C({0},{1},{2},{3},{4}\
                     )'".format(config,d,int(e*100),oneN,twoN))
 
 		# save the unfolded text file as npy file
-        unfolded  = './unfolded_data/halo'+str(config)+'_'+str(d)+'kpc_observed_E'+\
+        unfolded  = './unfolded_data/halo'+str(config)+'_'+str(d)+'kpc_unfolded_E'+\
                     str(int(100*e))+'.txt'
         txt_to_npy(unfolded)
         
