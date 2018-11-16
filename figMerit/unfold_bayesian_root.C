@@ -1,5 +1,5 @@
-void unfold_bayesian_root(int config, int distance, int eff, int oneN, int twoN,
-                            string prior_truth, string prior_obs) {
+void unfold_bayesian_root(int config, int distance, int dist_uncert, int eff, 
+                                                        int oneN, int twoN) {
 
     gROOT->SetBatch(); // don't display the histograms
 
@@ -7,6 +7,15 @@ void unfold_bayesian_root(int config, int distance, int eff, int oneN, int twoN,
     gSystem->Load("~/Downloads/RooUnfold-1.1.1/libRooUnfold");
 
     // Load the prior
+    string prior_truth, prior_obs;
+    ostringstream convert1, convert2;
+    convert1 << "priors/prior_halo" << config << "_" << distance << "kpc_" <<
+                "distUncert" << dist_uncert << "_truth.txt";
+    convert2 << "priors/prior_halo" << config << "_" << distance << "kpc_" <<
+                "distUncert" << dist_uncert << "_observed_E" << eff << ".txt";
+    prior_truth = convert1.str();
+    prior_obs   = convert2.str();
+
     TTree *tprior_tru = new TTree("tprior_tru","Prior truth");
     TTree *tprior_obs = new TTree("tprior_obs","Prior observed");
     tprior_tru->ReadFile(prior_truth.c_str(),"1nt/D:2nt/D");
@@ -63,7 +72,8 @@ void unfold_bayesian_root(int config, int distance, int eff, int oneN, int twoN,
     // Save the results in a text file
     string unfolded_file;
     ostringstream convert4;
-    convert4 << "./unfolded_data/halo" << config << "_" << distance << "kpc_unfolded_E" << eff << ".txt";
+    convert4 << "./unfolded_data/halo" << config << "_" << distance << "kpc_" <<
+                "distUncert" << dist_uncert << "_unfolded_E" << eff << ".txt";
     unfolded_file = convert4.str();
 
     ofstream savefile;

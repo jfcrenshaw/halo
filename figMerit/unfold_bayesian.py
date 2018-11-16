@@ -30,8 +30,8 @@ for d in dist:
             # ------------------------------------------------------------------
 
             # prior names
-            fname = 'prior_halo'+str(config)+'_'+str(int(dist))+'kpc'+\
-            '_distUncert'+str(int(100*dist_uncertainty))
+            fname = 'prior_halo'+str(config)+'_'+str(int(d))+'kpc'+\
+            '_distUncert'+str(int(100*du))
             truprior = './priors/'+fname+'_truth.npy'
             obsprior = './priors/'+fname+'_observed_E'+str(int(100*e))+'.npy' 
 
@@ -48,12 +48,13 @@ for d in dist:
             twoN = 48*scale
 
             # Unfold
-            os.system("root -l -q 'unfold_bayesian_root.C({0},{1},{2},{3},{4}\
-                        )'".format(config,d,int(e*100),oneN,twoN))
+            os.system("root -l -q 'unfold_bayesian_root.C({0},{1},{2},{3},{4},{5}\
+                        )'".format(config,d,int(du*100),int(e*100),oneN,twoN))
 
             # save the unfolded text file as npy file
             unfolded  = './unfolded_data/halo'+str(config)+'_'+str(d)+\
-                        'kpc_unfolded_E'+str(int(100*e))+'.txt'
+                        'kpc_distUncert'+str(int(100*du))+'_unfolded_E'+\
+                        str(int(100*e))+'.txt'
             txt_to_npy(unfolded)
             
             # remove text files
