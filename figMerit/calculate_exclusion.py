@@ -6,9 +6,9 @@ import seaborn as sns
 from scipy import stats
 
 
-config = 2 # 1=HALO, 2=HALO-1kT
-dist = [5,10,15,20,25,30,35,40,45,50] # supernova distance in kpc
-eff = [0.3,0.35,0.4,0.45,0.50,0.55,0.6,0.65,0.7,0.75,0.8] # 1n detection efficiency
+config = 1 # 1=HALO, 2=HALO-1kT
+dist = [2,4,6,8,10] # supernova distance in kpc
+eff = [0.28] # 1n detection efficiency
 
 
 def main():
