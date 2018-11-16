@@ -1,4 +1,5 @@
-void unfold_bayesian_root(int config, int distance, int eff, int oneN, int twoN) {
+void unfold_bayesian_root(int config, int distance, int eff, int oneN, int twoN,
+                            string prior_truth, string prior_obs) {
 
     gROOT->SetBatch(); // don't display the histograms
 
@@ -6,14 +7,6 @@ void unfold_bayesian_root(int config, int distance, int eff, int oneN, int twoN)
     gSystem->Load("~/Downloads/RooUnfold-1.1.1/libRooUnfold");
 
     // Load the prior
-    string prior_truth, prior_obs;
-    ostringstream convert1, convert2;
-    convert1 << "priors/prior_halo" << config << "_" << distance << "kpc_truth.txt";
-    convert2 << "priors/prior_halo" << config << "_" << distance << "kpc_observed_E"
-             << eff << ".txt";
-    prior_truth = convert1.str();
-    prior_obs   = convert2.str();
-
     TTree *tprior_tru = new TTree("tprior_tru","Prior truth");
     TTree *tprior_obs = new TTree("tprior_obs","Prior observed");
     tprior_tru->ReadFile(prior_truth.c_str(),"1nt/D:2nt/D");
@@ -24,8 +17,8 @@ void unfold_bayesian_root(int config, int distance, int eff, int oneN, int twoN)
 
     // First I need to create a 2D hist with the right dimension
     // Needed to supply dimensions to the response matrix
-    int xmax = static_cast<int>(oneN+5*sqrt(oneN)+100);
-    int ymax = static_cast<int>(twoN+5*sqrt(twoN)+100); 
+    int xmax = static_cast<int>(oneN+5*sqrt(oneN)+200);
+    int ymax = static_cast<int>(twoN+5*sqrt(twoN)+200); 
 
     TH2D *temp = new TH2D("temp","temp",40,0,xmax,40,0,ymax);
 

@@ -10,22 +10,20 @@ import numpy as np
 # ------------------------------------------------------------------------------
 
 config = 1 # 1=HALO, 2=HALO-1kT
-dist_uncertainty = 0.1
+dist_uncertainty = [0,0.1]
 dist = [12,14] # supernova distance in kpc
 eff = [0.28] # 1n detection efficiency
 
 def main():
     for d in dist:
-            
-            # efficiency matrix
-            #M = np.matrix([[e,2*e*(1-e)],[0,e**2]])
+        for du in dist_uncertainty: 
 
-        # distance known prior
-        prior_distKnown(config,d,dist_uncertainty,eff)
+            # distance known prior
+            prior_distKnown(config,d,du,eff)
 
-        for e in eff:
+            for e in eff:
 
-            simulate_observations(config,d,e)
+                simulate_observations(config,d,e)
 
 
 # ------------------------------------------------------------------------------
@@ -109,7 +107,8 @@ def prior_distKnown(config,dist,dist_uncertainty,eff):
     # save truth to file
     tru = [oneNtruth,twoNtruth]
     prior_location = './priors/'
-    fname = prior_location+'prior_halo'+str(config)+'_'+str(int(dist))+'kpc'
+    fname = prior_location+'prior_halo'+str(config)+'_'+str(int(dist))+'kpc'+\
+            '_distUncert'+str(int(100*dist_uncertainty))
     np.save(fname+'_truth.npy',tru)
     
     # save observed priors
