@@ -43,7 +43,7 @@ def main():
                 
                 # load the prior data
                 prior = 'priors/prior_halo'+str(config)+'_'+str(d)+'kpc'+\
-                        '_distUncert'+str(int(100*du))+'_truth.npy'
+                        '_distUncert'+str(int(100*0.1))+'_truth.npy'
                 oneN,twoN = np.load(prior)
                 prior_area = len(oneN)
 
