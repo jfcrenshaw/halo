@@ -11,7 +11,7 @@ import numpy as np
 
 config = 2 # 1=HALO, 2=HALO-1kT
 dist_uncertainty = [0.1]
-dist = [14] # supernova distance in kpc
+dist = [5,10,14] # supernova distance in kpc
 eff = np.linspace(0.3,0.8,11) # 1n detection efficiency
 
 def main():
@@ -136,12 +136,12 @@ def simulate_observations(config,dist,e):
     # efficiency matrix
     M = np.matrix([[e,2*e*(1-e)],[0,e**2]])
 
-    scale = (5.0/dist)**2
+    scale = (10.0/dist)**2
     if config == 2:
         scale /= 0.079
 
-    oneN = 72*scale
-    twoN = 48*scale
+    oneN = 150*scale
+    twoN = 40*scale
 
     tru = [[],[]] # array for truth values
     obs = [[],[]] # array for observed values
