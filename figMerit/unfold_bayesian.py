@@ -9,7 +9,7 @@ from convert_files import npy_to_txt, txt_to_npy
 
 config = 2 # 1=HALO, 2=HALO-1kT
 dist_uncertainty = [0.1]
-dist = [14] # supernova distance in kpc
+dist = [5,10,14] # supernova distance in kpc
 eff = np.linspace(0.3,0.8,11) # 1n detection efficiency
 
 for d in dist:
@@ -41,12 +41,12 @@ for d in dist:
             npy_to_txt(obsprior)
             npy_to_txt(obsdata)
 
-            scale = (5.0/d)**2
+            scale = (10.0/d)**2
             if config == 2:
                 scale /= 0.079
 
-            oneN = 72*scale
-            twoN = 48*scale
+            oneN = 150*scale
+            twoN = 40*scale
 
             # Unfold
             os.system("root -l -q 'unfold_bayesian_root.C({0},{1},{2},{3},{4},{5}\
