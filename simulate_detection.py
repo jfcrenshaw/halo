@@ -9,13 +9,14 @@ from modules.efficiency_matrix import effmatrix
 inputfile = "input.txt"
 truth = truth(inputfile)
 
-M = effmatrix()
-
 
 ntrials = 10000 # how many trials to run
 
 
 for config in truth:
+
+    M = effmatrix(config[:5])
+    
     for pair in truth[config]:
         tru = [[],[]] # array for truth values
         obs = [[],[]] # array for observed values

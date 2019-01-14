@@ -6,7 +6,7 @@ from scipy import stats
 # This module contains a suite of functions that are used to make the contour
 # plots of the unfolded data..
 
-def trim_data(xdata,ydata):
+def trim_data(xdata,ydata,percent=0.1):
     
     npoints = len(xdata)
 
@@ -16,7 +16,7 @@ def trim_data(xdata,ydata):
     
     sort = [i for i in Z]
     sort.sort()
-    cut = sort[int(0.1*npoints)]
+    cut = sort[int(percent*npoints+0.5)]
     
     xcut = []
     ycut = []
