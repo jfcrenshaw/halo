@@ -18,21 +18,31 @@ void unfold_bayesian_root(int config, int distance, int oneN, int twoN, int prio
     // Load the Prior
     if (prior == 1) {
         // Positive Plane prior
-        string prior_truth = "./priors/prior_positive_plane_truth.txt";
-        string prior_obs   = "./priors/prior_positive_plane_observed.txt";
-	string unfolding_type = "Positive Plane Prior";
+        string unfolding_type = "Positive Plane Prior";
+        if (config == 1) {
+            string prior_truth = "./priors/prior_positive_plane_truth.txt";
+            string prior_obs   = "./priors/prior_positive_plane_observed.txt";
+        } else if (config == 2) {
+            string prior_truth = "./priors/prior_halo2_positive_plane_truth.txt";
+            string prior_obs   = "./priors/prior_halo2_positive_plane_observed.txt";
+        }
     }
     else if (prior == 2) {
         // Distance Unknwon prior
-        string prior_truth = "./priors/prior_distUnknown_truth.txt";
-        string prior_obs   = "./priors/prior_distUnknown_observed.txt";
-	string unfolding_type = "Distance Unknown Prior";
+        string unfolding_type = "Distance Unknown Prior";
+        if (config == 1) {
+            string prior_truth = "./priors/prior_distUnknown_truth.txt";
+            string prior_obs   = "./priors/prior_distUnknown_observed.txt";
+        } else if (config == 2) {
+            string prior_truth = "./priors/prior_halo2_distUnknown_truth.txt";
+            string prior_obs   = "./priors/prior_halo2_distUnknown_observed.txt";
+        } 
     }
     else if (prior == 3) {
         // Distance Known prior
+        string unfolding_type = "Distance Known Prior";
         string prior_truth = "./priors/prior_" + prior_id + "_truth.txt";
         string prior_obs   = "./priors/prior_" + prior_id + "_observed.txt";
-	string unfolding_type = "Distance Known Prior";
     }
 
     cout << "with " << unfolding_type << endl << endl;

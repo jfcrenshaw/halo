@@ -9,10 +9,11 @@ from modules.efficiency_matrix import effmatrix
 inputfile = "input.txt"
 truth = truth(inputfile) # dictionary of inputs
 
-M = effmatrix() # HALO efficiency matrix
-invM = M.I # inverse matrix
-
 for config in truth:
+    
+    M = effmatrix(config[:5])
+    invM = M.I # inverse matrix
+
     for pair in truth[config]:
 
         data_location = './data/'

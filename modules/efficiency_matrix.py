@@ -13,16 +13,28 @@
 # See the tech note for more details
 #
 # The current used values are seen in the function below:
+#
+# There is also a matrix for HALO-1kT, using e = 0.53 and calculating the others
+# with the normal formulae (not the altered ones mentioned above)
 
 import numpy as np
 
-def effmatrix():
+def effmatrix(config='halo1'):
 
-    M11 = 0.283
-    M12 = 0.376
-    M21 = 0
-    M22 = 0.097
-
-    M = np.matrix([[M11,M12],[M21,M22]])
+    if config == 'halo1' or config == 'Halo1' or config == 'HALO1' or config == 1:
+        M11 = 0.283
+        M12 = 0.376
+        M21 = 0
+        M22 = 0.097
+        M = np.matrix([[M11,M12],[M21,M22]])
+    elif config == 'halo2' or config == 'Halo2' or config == 'HALO2' or config == 2:
+        M11 = 0.530
+        M12 = 0.498
+        M21 = 0
+        M22 = 0.281
+        M = np.matrix([[M11,M12],[M21,M22]])
+    else:
+        print('Invalid experiment configuration. Please provide either halo1 or halo2')
+   
 
     return M
