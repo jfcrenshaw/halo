@@ -33,8 +33,12 @@ for config in truth:
 		# ----------------------------------------------------------------------
 
 		# prior names
-		truprior = './priors/prior_positive_plane_truth.npy'
-		obsprior = './priors/prior_positive_plane_observed.npy'
+		if config[:5] == 'halo1':
+			truprior = './priors/prior_positive_plane_truth.npy'
+			obsprior = './priors/prior_positive_plane_observed.npy'
+		elif config[:5] == 'halo2':
+			truprior = './priors/prior_halo2_positive_plane_truth.npy'
+			obsprior = './priors/prior_halo2_positive_plane_observed.npy'
 
 		# save text versions
 		npy_to_txt(truprior)
@@ -56,8 +60,12 @@ for config in truth:
 		# ----------------------------------------------------------------------
 
 		# prior names
-		truprior = './priors/prior_distUnknown_truth.npy'
-		obsprior = './priors/prior_distUnknown_observed.npy'
+		if config[:5] == 'halo1':
+			truprior = './priors/prior_distUnknown_truth.npy'
+			obsprior = './priors/prior_distUnknown_observed.npy'
+		if config[:5] == 'halo2':
+			truprior = './priors/prior_halo2_distUnknown_truth.npy'
+			obsprior = './priors/prior_halo2_distUnknown_observed.npy'
 
 		# save text versions
 		npy_to_txt(truprior)
@@ -98,7 +106,7 @@ for config in truth:
 		unfolded  = './unfolded_data/halo'+str(config_num)+'_'+str(config_dist)+\
 					'kpc_'+str(oneN)+'v'+str(twoN)+'_unfolded_bayesian_'+\
 					'distKnown.txt'
-        txt_to_npy(unfolded)
+        	txt_to_npy(unfolded)
 		
 	
 		# ----------------------------------------------------------------------
@@ -107,7 +115,7 @@ for config in truth:
 		# remove the text files
 		os.system('rm data/*txt')
 		os.system('rm priors/*txt')
-        os.system('rm unfolded_data/*txt')
+       		os.system('rm unfolded_data/*txt')
 
 
 
