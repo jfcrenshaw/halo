@@ -12,7 +12,7 @@ def prior_positive_plane():
             tru[0].append(i)
             tru[1].append(j)
 
-    """
+    
     # halo1 prior
     M = effmatrix()
     obs = [[],[]] # array for observed values
@@ -26,7 +26,7 @@ def prior_positive_plane():
 
     np.save('priors/prior_positive_plane_truth.npy',tru)
     np.save('priors/prior_positive_plane_observed.npy',obs)
-    """
+    
 
     # halo 2 prior
     M = effmatrix('halo2')
@@ -52,7 +52,7 @@ def prior_distUnknown():
             tru[0].append(i)
             tru[1].append(j)
     
-    """
+    
     # halo1 prior
     M = effmatrix()
     obs = [[],[]] # array for observed values
@@ -66,7 +66,7 @@ def prior_distUnknown():
 
     np.save('priors/prior_distUnknown_truth.npy',tru)
     np.save('priors/prior_distUnknown_observed.npy',obs)
-    """
+    
 
     # halo2 prior
     M = effmatrix('halo2')
