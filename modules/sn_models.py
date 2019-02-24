@@ -54,13 +54,13 @@ def snowglobes_curves(axis,detector,dist,color):
         colors = [color,color]
 
     for i in [E13L1NH,E18L1NH,E25L1NH]:
-        axis.plot(i[0]*scale,i[1]*scale,color=colors[0],linestyle='--')
+        axis.plot(i[0]*scale,i[1]*scale,color=colors[0],linestyle='--',linewidth=1)
     for i in [E13L1IH,E18L1IH,E25L1IH]:
-        axis.plot(i[0]*scale,i[1]*scale,color=colors[0],linestyle='-')
+        axis.plot(i[0]*scale,i[1]*scale,color=colors[0],linestyle='-',linewidth=1)
     for i in [E13L2NH,E18L2NH,E25L2NH]:
-        axis.plot(i[0]*scale,i[1]*scale,color=colors[1],linestyle='--')
+        axis.plot(i[0]*scale,i[1]*scale,color=colors[1],linestyle='--',linewidth=1)
     for i in [E13L2IH,E18L2IH,E25L2IH]:
-        axis.plot(i[0]*scale,i[1]*scale,color=colors[1],linestyle='-')
+        axis.plot(i[0]*scale,i[1]*scale,color=colors[1],linestyle='-',linewidth=1)
 
 
 
@@ -98,10 +98,10 @@ def other_sn_models(axis,detector,dist,color):
         LSS20_color = color
         shen_color = color
 
-    axis.scatter(NHoneN[:half]*scale,NHtwoN[:half]*scale,marker='s',edgecolors=LSS20_color,facecolors='none')
-    axis.scatter(IHoneN[:half]*scale,IHtwoN[:half]*scale,marker='s',color=LSS20_color)
-    axis.scatter(NHoneN[half:]*scale,NHtwoN[half:]*scale,marker='s',edgecolors=shen_color,facecolors='none')
-    axis.scatter(IHoneN[half:]*scale,IHtwoN[half:]*scale,marker='s',color=shen_color)
+    axis.scatter(NHoneN[:half]*scale,NHtwoN[:half]*scale,marker='s',s=16,edgecolors=LSS20_color,facecolors='none')
+    axis.scatter(IHoneN[:half]*scale,IHtwoN[:half]*scale,marker='s',s=16,color=LSS20_color)
+    axis.scatter(NHoneN[half:]*scale,NHtwoN[half:]*scale,marker='s',s=16,edgecolors=shen_color,facecolors='none')
+    axis.scatter(IHoneN[half:]*scale,IHtwoN[half:]*scale,marker='s',s=16,color=shen_color)
 
     # Other points
     if color == True:
@@ -112,5 +112,5 @@ def other_sn_models(axis,detector,dist,color):
         colors = [color,color,color]
 
     for i in range(len(other1nNH)):
-        axis.scatter(other1nNH[i]*scale,other2nNH[i]*scale,marker='s',edgecolors=colors[i],facecolors='none')
-        axis.scatter(other1nIH[i]*scale,other2nIH[i]*scale,marker='s',color=colors[i])
+        axis.scatter(other1nNH[i]*scale,other2nNH[i]*scale,marker='s',s=16,edgecolors=colors[i],facecolors='none')
+        axis.scatter(other1nIH[i]*scale,other2nIH[i]*scale,marker='s',s=16,color=colors[i])
